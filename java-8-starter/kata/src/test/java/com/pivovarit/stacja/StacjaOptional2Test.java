@@ -134,6 +134,15 @@ public class StacjaOptional2Test {
         System.out.println(i);
     }
 
+    @Test
+    void ex_15() {
+        Optional<Optional<Integer>> i1 = findOptionalById(12)
+          .map(i -> findOptionalById(42));
+
+        Optional<Integer> integer = findOptionalById(12)
+          .flatMap(i -> findOptionalById(42));
+    }
+
     private Integer calculateDefault() {
         try {
             Thread.sleep(4000);
