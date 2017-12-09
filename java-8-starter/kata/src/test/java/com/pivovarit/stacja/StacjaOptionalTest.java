@@ -30,4 +30,8 @@ public class StacjaOptionalTest {
             return Optional.of(i);
         }
     }
+
+    public Optional<Integer> findOptionalByIdDelegate(Integer i) {
+        return Optional.ofNullable(findById(i));
+    }
 }
