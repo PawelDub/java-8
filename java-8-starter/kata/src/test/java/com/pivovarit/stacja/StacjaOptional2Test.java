@@ -105,7 +105,41 @@ public class StacjaOptional2Test {
         findOptionalById(12)
           .map(integer -> integer * 2)
           .map(Object::toString)
+          .filter(s -> !s.isEmpty())
           .ifPresent(value -> System.out.println(value));
+    }
+
+    @Test
+    void ex_12() {
+        findOptionalById(12)
+          .map(integer -> integer * 2)
+          .map(s -> "")
+          .filter(s -> !s.isEmpty())
+          .ifPresent(value -> System.out.println(value));
+    }
+
+    @Test
+    void ex_13() {
+        Integer i = findOptionalById(13)
+          .orElse(calculateDefault());
+
+        System.out.println(i);
+    }
+
+    @Test
+    void ex_14() {
+        Integer i = findOptionalById(12)
+          .orElseGet(() -> calculateDefault());
+
+        System.out.println(i);
+    }
+
+    private Integer calculateDefault() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+        }
+        return 42;
     }
 
     public Optional<Integer> findOptionalById(Integer i) {
