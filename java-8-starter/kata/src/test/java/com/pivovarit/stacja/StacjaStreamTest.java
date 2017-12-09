@@ -119,6 +119,8 @@ public class StacjaStreamTest {
           .findAny();
     }
 
+    //git clone https://pivovarit@bitbucket.org/pivovarit/java8-kata.git
+
     @Test
     void ex_11() {
         Customer adam = new Customer(Arrays.asList(
